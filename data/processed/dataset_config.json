@@ -1,0 +1,48 @@
+{
+  "dataset_info": {
+    "total_train_images": 11521,
+    "total_test_images": 1279,
+    "classes": [
+      "MildDemented",
+      "ModerateDemented",
+      "NonDemented",
+      "VeryMildDemented"
+    ],
+    "class_distribution_train": {
+      "MildDemented": 1665,
+      "ModerateDemented": 64,
+      "NonDemented": 5712,
+      "VeryMildDemented": 4080
+    },
+    "class_distribution_test": {
+      "0": 1100,
+      "1": 179
+    },
+    "imbalance_ratio": 89.25,
+    "image_size": 224
+  },
+  "paths": {
+    "train_dir": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data\\processed\\train",
+    "test_dir": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data\\processed\\test"
+  },
+  "transforms": {
+    "train_augmentations": [
+      "Resize",
+      "RandomHorizontalFlip",
+      "RandomRotation",
+      "ColorJitter",
+      "RandomAffine",
+      "Normalize"
+    ],
+    "test_augmentations": [
+      "Resize",
+      "Normalize"
+    ]
+  },
+  "recommendations": {
+    "use_weighted_sampler": true,
+    "use_class_weights": true,
+    "monitor_balanced_accuracy": true,
+    "focal_loss_recommended": true
+  }
+}
