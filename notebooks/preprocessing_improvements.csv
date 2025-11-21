@@ -1,0 +1,8 @@
+Métrique,Données Brutes,Données Prétraitées,Amélioration
+Largeur moyenne (px),176,224,100.0%
+Hauteur moyenne (px),208,224,100.0%
+Tailles uniques,1,1,0.0%
+Taille fichier moyenne (MB),0.005,0.029,-487.2%
+Intensité moyenne (0-1),0.273,0.520,Normalisé
+Écart-type intensité,0.030,0.074,-145.9%
+Standardisation,❌ Non,✅ Oui (224x224),✅
