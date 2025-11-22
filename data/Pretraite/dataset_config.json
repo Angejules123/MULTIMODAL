@@ -1,0 +1,135 @@
+{
+  "dataset_info": {
+    "name": "Alzheimer MRI Classification Dataset",
+    "description": "Dataset d'images IRM cérébrales pour la détection de la maladie d'Alzheimer",
+    "classes": [
+      "MildDemented",
+      "ModerateDemented",
+      "NonDemented",
+      "VeryMildDemented"
+    ],
+    "num_classes": 4,
+    "total_train_preprocessed": 11521,
+    "total_test_preprocessed": 0,
+    "image_size": 224,
+    "class_distribution": {
+      "MildDemented": 1665,
+      "ModerateDemented": 64,
+      "NonDemented": 5712,
+      "VeryMildDemented": 4080
+    },
+    "class_percentages": {
+      "MildDemented": 14.5,
+      "ModerateDemented": 0.6,
+      "NonDemented": 49.6,
+      "VeryMildDemented": 35.4
+    },
+    "imbalance_ratio": 89.25,
+    "most_common_class": "NonDemented",
+    "least_common_class": "ModerateDemented"
+  },
+  "preprocessing": {
+    "resize": [224, 224],
+    "normalization": {
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225]
+    },
+    "techniques_applied": [
+      "CLAHE (Contrast Limited Adaptive Histogram Equalization)",
+      "Gaussian Blur",
+      "Bilateral Filter",
+      "Resize to 224x224",
+      "ImageNet normalization"
+    ]
+  },
+  "class_weights": {
+    "MildDemented": 0.15,
+    "ModerateDemented": 3.73,
+    "NonDemented": 0.05,
+    "VeryMildDemented": 0.07
+  },
+  "class_weights_method": "Effective Number of Samples",
+  "class_weights_beta": 0.9999,
+  "augmentation": {
+    "train": {
+      "RandomHorizontalFlip": 0.5,
+      "RandomVerticalFlip": 0.3,
+      "RandomRotation": 15,
+      "ColorJitter": {
+        "brightness": 0.3,
+        "contrast": 0.3,
+        "saturation": 0.2
+      },
+      "RandomAffine": {
+        "degrees": 0,
+        "translate": [0.1, 0.1]
+      }
+    },
+    "validation": "None (only normalization)"
+  },
+  "training_config": {
+    "batch_size": 32,
+    "num_epochs": 25,
+    "val_split": 0.2,
+    "learning_rates": {
+      "cnn": 0.001,
+      "resnet": 0.0001,
+      "vit": 0.00005
+    },
+    "loss_function": "Focal Loss",
+    "focal_loss_gamma": 2.0,
+    "sampler": "WeightedRandomSampler",
+    "num_workers": 4
+  },
+  "models": {
+    "CustomCNN": {
+      "description": "CNN personnalisé avec 4 blocs convolutionnels",
+      "architecture": "Conv64 -> Conv128 -> Conv256 -> Conv512 -> FC256 -> FC4",
+      "optimizer": "Adam",
+      "scheduler": "ReduceLROnPlateau"
+    },
+    "ResNet-101": {
+      "description": "ResNet-101 pré-entraîné avec transfer learning",
+      "pretrained": "ImageNet",
+      "frozen_layers": "All except last 30 parameters",
+      "optimizer": "Adam",
+      "scheduler": "ReduceLROnPlateau"
+    },
+    "ViT": {
+      "description": "Vision Transformer (ViT-B/16)",
+      "pretrained": "ImageNet",
+      "architecture": "vit_b_16",
+      "optimizer": "AdamW",
+      "weight_decay": 0.01,
+      "scheduler": "CosineAnnealingLR"
+    }
+  },
+  "metrics": {
+    "primary_metric": "Balanced Accuracy",
+    "secondary_metrics": [
+      "Accuracy",
+      "Precision",
+      "Recall",
+      "F1-Score"
+    ],
+    "evaluation": "Confusion Matrix, Classification Report"
+  },
+  "paths": {
+    "base_dir": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data",
+    "pretraite_dir": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data/Pretraite",
+    "train_dir": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data/Pretraite/train",
+    "test_dir": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data/Pretraite/test",
+    "tensorboard_logs": "C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data/runs"
+  },
+  "metadata": {
+    "created_date": "2025-11-22",
+    "version": "1.0",
+    "purpose": "Configuration file for Alzheimer MRI classification training",
+    "notes": [
+      "Extreme class imbalance (89:1 ratio)",
+      "Focal Loss and WeightedRandomSampler used to handle imbalance",
+      "Balanced Accuracy is the primary evaluation metric",
+      "TensorBoard logging enabled for all models"
+    ]
+  }
+}
