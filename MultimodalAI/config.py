@@ -4,7 +4,7 @@ import pathlib
 # ==============================================================================
 
 # Dossier Racine contenant les sous-dossiers de classes (MildDemented, NonDemented, etc.)
-DATA_ROOT_DIR = 'C:/Users/angej/Desktop/MultimodalAI/Alzheimer/data/processed/train'
+DATA_ROOT_DIR = 'MultimodalAI/Alzheimer/data/processed/train'
 
 
 # Paramètres de l'image et du modèle
