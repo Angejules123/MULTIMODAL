@@ -1,0 +1,18 @@
+augmentation:
+  train:
+    cutmix: true
+    mixup: true
+    random_brightness: 0.3
+    random_contrast: 0.3
+    random_flip: true
+    random_rotation: 20
+description: Configuration avancée avec augmentation
+model:
+  architecture: resnet50
+  dropout: 0.5
+  pretrained: true
+training:
+  batch_size: 64
+  learning_rate: 0.0005
+  mixed_precision: true
+  num_epochs: 100

@@ -1,0 +1,8 @@
+description: Configuration baseline simple
+model:
+  architecture: resnet18
+  pretrained: true
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  num_epochs: 30

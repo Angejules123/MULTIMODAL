@@ -1,0 +1,9 @@
+description: Fine-tuning avec backbone gelé
+model:
+  architecture: efficientnet_b0
+  freeze_backbone: true
+  pretrained: true
+training:
+  batch_size: 16
+  learning_rate: 0.0001
+  num_epochs: 20
