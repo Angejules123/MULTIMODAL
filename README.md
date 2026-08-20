@@ -1,82 +1,66 @@
+# IA médicale multimodale & explicable (XAI)
 
-=======
-# Multimodal-AI
+> Système d'aide au diagnostic précoce de troubles cognitifs, combinant **signaux EEG**,
+> **imagerie IRM** et **données d'activités de la vie quotidienne**, avec une contrainte
+> centrale : chaque prédiction doit pouvoir être justifiée.
 
-"""# Diagnostic Précoce des Troubles Cognitifs
-## Intelligence Artificielle Multimodale Explicable
+Projet académique — Master 2 Science des Données, 2025. Mené en binôme.
 
-**Auteurs:** ANGE JULES & MAHAMADOU SAADOU ADANANE
-
----
-
-## 📋 Description
-
-Système d'IA multimodale explicable (XAI) pour le diagnostic précoce de:
-- Alzheimer
-- TDAH
-- Dépression
-- Autisme
-- Stress chronique
-
-### Modalités Intégrées
-- 🧠 **EEG**: Signaux électroencéphalographiques
-- 🔬 **IRM**: Imagerie par résonance magnétique
-- 🎯 **ADL**: Activités de la vie quotidienne
+**Troubles couverts :** Alzheimer, TDAH, autisme, dépression, stress chronique.
 
 ---
-# 🧠 MULTIMODAL - Système de Classification d'Images Médicales
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+## Pourquoi l'explicabilité d'abord
 
-## 📋 Description du Projet
+En santé, un modèle qui annonce un diagnostic sans pouvoir dire *pourquoi* n'a aucune
+valeur décisionnelle. Un clinicien ne peut ni le contredire, ni le suivre en conscience,
+ni en rendre compte au patient. L'explicabilité n'est donc pas ici un supplément de
+confort : c'est ce qui détermine si le système est utilisable ou non.
 
-Ce projet implémente un système multimodal de classification d'images médicales pour l'analyse de scans cérébraux, avec une interface interactive Streamlit pour la démonstration et l'expérimentation.
+C'est pourquoi l'approche XAI structure l'ensemble du projet plutôt que d'être ajoutée
+en fin de chaîne.
 
-## 🚀 Fonctionnalités
+## Pourquoi le multimodal
 
-### 🔍 Analyse Multimodale
-- **Classification d'images** avec modèles ResNet et architectures personnalisées
-- **Prétraitement avancé** des images médicales
-- **Augmentation de données** spécifique au domaine médical
-- **Visualisation interactive** des résultats
+Aucune des trois sources ne suffit isolément :
 
-### 🎯 Application Interactive
-- **Interface Streamlit** intuitive
-- **Upload d'images** en temps réel
-- **Visualisation des prédictions** avec scores de confiance
-- **Analyse comparative** des modèles
+| Modalité | Ce qu'elle apporte | Sa limite |
+|---|---|---|
+| EEG | Activité électrique, dynamique temporelle | Bruité, sensible aux artefacts |
+| IRM | Structure cérébrale, lésions | Statique, coûteuse, peu répétable |
+| Activités quotidiennes | Retentissement fonctionnel réel | Subjective, déclarative |
 
-### 📊 Capacités Techniques
-- Entraînement de modèles deep learning
-- Évaluation des performances avec métriques détaillées
-- Génération d'embeddings et features extraction
-- TensorBoard integration pour le monitoring
+Les combiner permet de croiser un signal physiologique, une image structurelle et une
+observation comportementale — trois angles sur le même phénomène.
 
-## 🛠️ Installation
+## Approche
 
-### Prérequis
-- Python 3.8+
-- Git
+- **Classification d'images médicales** : ResNet et architectures personnalisées.
+- **Traitement des signaux EEG** : prétraitement, extraction de caractéristiques.
+- **Fusion multimodale** des trois sources.
+- **Démonstrateur interactif** développé avec Streamlit, permettant de charger un cas et
+  de visualiser la prédiction accompagnée de ses éléments justificatifs.
 
-### Installation rapide
-### Installation rapides
+## Stack
+
+Python · PyTorch · ResNet · Streamlit · TensorBoard
+
+## Lancer le projet
+
 ```bash
-# Cloner le repository
-git clone https://github.com/Angejules123/MULTIMODAL.git
-cd MULTIMODAL
-
-# Créer un environnement virtuel
-python -m venv .venv
-source .venv/bin/activate  # Sur Windows: .venv\Scripts\activate
-
-# Installer les dépendances
 pip install -r requirements.txt
+streamlit run app.py
+```
 
-## 👥 Contact
+> Ajuster selon l'arborescence réelle du dépôt.
 
-- ANGE JULES
-- MAHAMADOU SAADOU ADANANE
-"""
+## Limites et suites possibles
+
+Ce travail est un **prototype de recherche**, en aucun cas un dispositif médical. Il n'a
+pas fait l'objet d'une validation clinique et ne doit pas être utilisé à des fins de
+diagnostic réel. Les pistes d'amélioration identifiées portent sur la taille et la
+diversité des jeux de données, et sur une évaluation par des cliniciens.
+
+---
+
+**Ange-Jules TIA** — tangejules@gmail.com · [LinkedIn](https://www.linkedin.com/in/ange-jules-tia-1a7b4a220)
